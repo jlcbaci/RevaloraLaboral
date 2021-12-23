@@ -1,0 +1,234 @@
+a{
+    color: #6c757d;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.btn:hover {
+    text-decoration: none;
+}
+
+.nav-link {
+    color: #fff;
+    font-weight: bold;
+}
+
+.nav-link:focus, .nav-link:hover {
+    color:#333;
+    font-weight: bold;
+}
+
+.bg-gris{
+    background: #3455f8;
+}
+.navbar-top {
+    background: #000;
+    border-bottom: 4px solid #ff0000;
+    color: #FFF;
+}
+
+.carousel .carousel-item {
+    height: 550px;
+}
+  
+.carousel-item img {
+    position: absolute;
+    /*object-fit:cover;*/
+    top: 0;
+    left: 0;
+    min-height: 300px;
+}
+
+@media(max-width:768px){
+    .carousel .carousel-inner{
+    height:auto
+    }
+}
+
+.divider-5{
+    width:100%; 
+    min-height:1px; 
+    margin-top:5px; 
+    margin-bottom:5px;  
+    display:inline-block; 
+    position:relative;
+}
+.divider-10 {
+    width:100%; 
+    min-height:1px; 
+    margin-top:10px; 
+    margin-bottom:10px;  
+    display:inline-block; 
+    position:relative;
+}
+.flex-column {
+    max-width: 400px;
+}
+
+.scale {
+    transform: scaleY(1.05);
+    padding-top: 5px; 
+}
+
+#logopage {
+    background-image: url(/assets/img/logo.png);
+}
+
+#page-title.layout-1, #page-title.layout-2, #page-title.layout-3{
+    padding-bottom: 102px;
+    padding-top: 130px;
+}
+
+#page-title.layout-1 {
+    background-image: url(/assets/img/somos.jpg);
+}
+
+#page-title.layout-2 {
+    background-image: url(/assets/img/catalogo.jpg);
+}
+
+#page-title.layout-3 {
+    background-image: url(/assets/img/contacto.jpg);
+}
+
+
+#page-title {
+    position: relative;
+    padding-top: 150px;
+    padding-bottom: 120px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #4b7d64;
+    text-align: center;
+}
+
+#page-section .background-section {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+#page-title.layout-1 .background-overlay {
+    background-color: rgba(163, 161, 160, 0.65);
+}
+
+#page-title.layout-9 .background-overlay {
+    background-color: rgba(163, 161, 160, 0.65);
+}
+/* Catálogo */
+#page-title.layout-2 .background-overlay {
+    background-color: rgba(163, 161, 160, 0.65);
+}
+/* Contacto */
+#page-title.layout-3 .background-overlay {
+    background-color: rgba(163, 161, 160, 0.65); 
+}
+
+
+.background-overlay {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+#page-title #page-title-text h1 {
+    position: relative;
+    text-transform: capitalize;
+    color: #fff;
+    font-size: 75px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 83px;
+    margin-bottom: 5px;
+}
+
+.map{
+    height: 500px;
+    width: 100%;
+    /*margin: 10px;*/
+    background-image: url(/assets/img/map.png);
+}
+
+.bancat{
+    height: 500px;
+    width: 100%;
+    background-image: url(/assets/img/map.png);
+}
+
+
+#page-section {
+    background-image: url(/assets/img/patron01.jpg);
+}
+
+.form-check-inline {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-left: 0;
+    margin-right: 0.75rem;
+}
+
+.form-check {
+    position: relative;
+    display: block;
+    padding-left: 1.25rem;
+    padding-top: calc(0.375rem + 1px);
+    padding-bottom: calc(0.375rem + 1px);
+}
+.form-check-inline .form-check-input {
+    position: static;
+    margin-top: 0;
+    margin-right: 0.3125rem;
+    margin-left: 0;
+}
+.form-check-label {
+    margin-bottom: 0;
+}
+.modal-body {
+    padding: 15px 30px 30px 30px;
+}
+.col-form-label {
+    padding-top: calc(0.375rem + 1px);
+    padding-bottom: calc(0.375rem + 1px);
+    margin-bottom: 0;
+    font-size: inherit;
+    line-height: 1.5;
+}
+.modal-footer {
+    text-align: center;
+}
+.panel-body {
+    padding: 30px;
+}
+.table {
+    margin-top: 20px;
+}
+.p-3 {
+    padding: 5rem 1rem!important;
+}
+.carousel-indicators li {
+    border: none;
+    background: #ccc;
+}
+
+.carousel-indicators li.active {
+    background: #28a745;
+}
+
+
+.bg-dark1{
+    background: #363636;
+}
+.bg-dark2{
+    background: #404040;
+}
+.bg-dark3{
+    background: #000000;
+}
+

@@ -1,0 +1,36 @@
+<div id="page-wrapper">
+  <section>
+    <div id="page-title" class="page-title layout-1">
+      <div class="background-overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div id="page-title-text" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h1 class="reset-fontsize-xs">{{ pagtitulo01 }}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="container">
+    <div class="p-5">
+      {{#each contenido}}
+      {{#ifeq idcontenido "3" }}
+      <h3>{{titcontenido}}</h3>
+      <p>{{desccontenido}}</p>
+      {{/ifeq}}
+      {{#ifeq idcontenido "4" }}
+      <div class="alert alert-dark" role="alert">
+        <h5>{{titcontenido}}</h5>
+        <p>{{desccontenido}}</p>
+      </div>
+      {{/ifeq}}
+      {{#ifeq idcontenido "5" }}            
+      <div class="alert alert-dark" role="alert">
+        <h5>{{titcontenido}}</h5>
+        <p>{{desccontenido}}</p>
+      </div>
+      {{/ifeq}}
+      {{/each}}
+    </div>
+  </section>
+</div>

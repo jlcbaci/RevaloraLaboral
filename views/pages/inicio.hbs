@@ -1,0 +1,46 @@
+{{> carrusel }}
+<div id="page-wrapper">
+  <section class="light">
+    <div class="container p-5">
+      <div class="card">
+        <div class="row">
+          <div class="col-md-7 p-5">
+            <div class="card-block">
+              {{#each contenido}}
+              {{#ifeq idcontenido "2" }}
+              <h4 class="card-title">{{titcontenido}}</h4>
+              <p class="card-text">{{desccontenido}}</p>
+              {{/ifeq}}
+              {{/each}} 
+              <br>
+              <a href="/catalogo/" class="mt-auto btn btn-primary  ">Ir al Catálogo</a>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="postcard">
+              <div class="postcard-inner">
+                <div class="postcard-item active">
+                  <img class="d-block" src="/assets/img/vectorcata.jpg" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>	
+  </section>
+  <section>
+    <div id="page-section" >
+      <div class="background-section">
+        <div class="container p-5 text-center text-dark">
+          {{#each contenido}}
+          {{#ifeq idcontenido "1" }}
+          <h1 class="mb-5 h2">{{titcontenido}}</h1>
+          <h5>{{desccontenido}}</h5>
+          {{/ifeq}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,313 @@
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Tabla Perfil Ocupacional</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#myModalAdd">Nuevo registro</button>
+                    <table width="100%" class="table table-striped table-bordered table-hover" id="mytable">
+                        <thead style="background: #999;">
+                            <tr>
+                                <th class="text-center" style="width: 5%;">#</th>
+                                <th class="text-center" style="width: 10%;">Sector</th>
+                                <th class="text-center" style="width: 5%;">Código Perfil</th>
+                                <th class="text-center" style="width: 30%;">Perfil Ocupacional</th>
+                                <th class="text-center" style="width: 5%;">Vigencia</th>
+                                <th class="text-center" style="width: 5%;">Version</th>
+                                <th class="text-center" style="width: 5%;">Fecha de aprobación</th>
+                                <th class="text-center" style="width: 5%;">Estado</th>
+                                <th class="text-center" style="width: 15%;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {{#each results}}
+                        <tr>
+                            <td class="text-center"><input name='idperfil' id='idperfil' type='checkbox' value="{{ idperfil }}" ></td>
+                            <td class="text-center">{{ sector }}</td>
+                            <td class="text-center">{{ codperfil }}</td>
+                            <td>{{ nomperfil }}</td>
+                            <td class="text-center">{{ numvigencia }}</td>
+                            <td class="text-center">{{ version }}</td> 
+                            <td class="text-center">{{formatTime fecaproba "DD/MM/YYYY"}}</td>
+                            <td class="text-center">{{#ifeq flag "1" }}Activo{{else}}Inactivo{{/ifeq}}</td>
+                            <td class="text-center">
+                                <a href="javascript:void(0);" class="btn btn-success view" data-id="{{ idperfil }}" data-sector="{{ sector }}" data-codperfil="{{ codperfil }}" data-nomperfil="{{ nomperfil }}" data-compgen="{{ compgen }}" data-numvigencia="{{ numvigencia }}" data-version="{{ version }}" data-fecaproba="{{formatTime fecaproba "DD/MM/YYYY"}}" data-flag="{{ flag }}">Ver</a>    
+                                <a href="javascript:void(0);" class="btn btn-primary edit" data-id="{{ idperfil }}" data-idsector="{{ idsector }}" data-codperfil="{{ codperfil }}" data-nomperfil="{{ nomperfil }}" data-compgen="{{ compgen }}" data-numvigencia="{{ numvigencia }}" data-version="{{ version }}" data-fecaproba="{{ fecaproba }}" data-flag="{{ flag }}">Editar</a>    
+                                <a href="javascript:void(0);" class="btn btn-danger delete" data-id="{{ idperfil }}">Borrar</a>
+                            </td>
+                        </tr>
+                        {{/each}}                        
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<form action="/viewperfil" method="post">
+    <div class="modal fade" id="ViewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Vista de tabla Perfil Ocupacional</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">ID</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="id" class="form-control idperfil" readonly>
+                        </div>                    
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Sector</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="sector" class="form-control sector" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Código</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="codperfil" class="form-control codperfil" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Perfil</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="nomperfil" class="form-control nomperfil" readonly>
+                        </div>  
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Competencia</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control compgen" name="compgen" rows="4" readonly></textarea>
+                        </div>
+                    </div>                    
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Vigencia</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="numvigencia" class="form-control numvigencia" readonly>
+                        </div>  
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Versión</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="version" class="form-control version" readonly>
+                        </div>  
+                    </div>                    
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-2 col-form-label">Fecha</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="fecaproba" class="form-control fecaproba" readonly>
+                        </div>  
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-2 col-form-label">Estado</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="flag" class="form-control flag" readonly>
+                        </div>  
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<form action="/savesector" method="post">
+    <div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nuevo registro de tabla Sector</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" name="codsector" class="form-control" placeholder="Código de Sector" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="sector" class="form-control" placeholder="Sector" required>
+                    </div>
+                    <div class="form-group form-check col-md-3">
+                        <legend class="col-form-label col-sm-2 pt-0">Estado</legend>
+                    </div>
+                    <div class="form-group form-check col-md-3">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="optRadio1" value="1">
+                        <label class="form-check-label" for="optRadio1">Activo</label>
+                    </div>
+                    <div class="form-group form-check col-md-3">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="optRadio2" value="0">
+                        <label class="form-check-label" for="optRadio2">Inactivo</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<form action="/updateperfil" method="post">
+    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Editar Tabla Perfil</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">ID</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="id" class="form-control idperfil" readonly>
+                        </div>                    
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Sector</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="idsector" class="form-control idsector" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Código</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="codperfil" class="form-control codperfil" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Perfil</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="nomperfil" class="form-control nomperfil" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Competencia General</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control compgen" name="compgen" rows="4" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Vigencia</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="numvigencia" class="form-control numvigencia" required>
+                        </div>
+                    </div>                    
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Version</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="version" class="form-control version" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Fecha</label>
+                        <div class="col-sm-10">
+                        <input type="date" name="fecaproba" class="form-control fecaproba" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Estado</label>
+                        <div class="col-sm-10">                
+                    </div>
+                    <div class="form-group form-check col-md-3">
+                        <input class="form-check-input flag" type="radio" name="inlineRadioOptions" id="optRadio1" value="1">
+                        <label class="form-check-label" for="optRadio1">Activo</label>
+                    </div>
+                    <div class="form-group form-check col-md-3">
+                        <input class="form-check-input flag" type="radio" name="inlineRadioOptions" id="optRadio2" value="0">
+                        <label class="form-check-label" for="optRadio2">Inactivo</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="id" class="idsector">
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<form id="add-row-form" action="/delperfil" method="post">
+    <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="myModalLabel">Eliminar registro Sector</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <strong>¿Estás seguro de eliminar el registro?</strong>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="idperfil" class="form-control idperfil2">
+                    <button type="submit" class="btn btn-primary">Eliminar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function (){
+        $('#mytable').on('click', '.view', function (){
+            var idperfil = $(this).data('id');
+            var sector = $(this).data('sector');
+            var codperfil = $(this).data('codperfil');
+            var nomperfil = $(this).data('nomperfil');
+            var compgen = $(this).data('compgen');
+            var version = $(this).data('version');
+            var numvigencia = $(this).data('numvigencia');                        
+            var flag = $(this).data('flag');
+            var fecaproba = $(this).data('fecaproba');
+            $('#ViewModal').modal('show');
+            $('.codperfil').val(codperfil);
+            $('.sector').val(sector);
+            $('.compgen').val(compgen);
+            $('.nomperfil').val(nomperfil);
+            $('.version').val(version);
+            $('.numvigencia').val(numvigencia);
+            $('.idperfil').val(idperfil);
+            $('.flag').val(flag);
+            $('.fecaproba').val(fecaproba);
+        });
+        $('#mytable').on('click', '.edit', function (){
+            var idperfil = $(this).data('id');
+            var idsector = $(this).data('idsector');
+            var codperfil = $(this).data('codperfil');
+            var nomperfil = $(this).data('nomperfil');
+            var compgen = $(this).data('compgen');
+            var version = $(this).data('version');
+            var numvigencia = $(this).data('numvigencia');
+            var flag = $(this).data('flag');
+            var fecaproba = $(this).data('fecaproba');
+            $('#EditModal').modal('show');
+            $('.codperfil').val(codperfil);
+            $('.idsector').val(idsector);            
+            $('.compgen').val(compgen);
+            $('.nomperfil').val(nomperfil);
+            $('.version').val(version);
+            $('.numvigencia').val(numvigencia);
+            $('.idperfil').val(idperfil);
+            $('.fecaproba').val(fecaproba);            
+            $("input[name=inlineRadioOptions][value=" + flag + "]").prop('checked', true);
+        });
+        $('#mytable').on('click', '.delete', function (){
+            var idperfil = $(this).data('id');
+            $('#DeleteModal').modal('show');
+            $('.idperfil2').val(idperfil);
+        });
+    });
+</script>
