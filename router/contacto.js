@@ -39,8 +39,8 @@ contacto.post("/send-email", (req, res) => {
     <p><strong>Mensaje: </strong>${mensaje}</p></h3>`
 
     let mailOptions = {
-        to: "Remitente",
-        from: `${nombre} ${apellido} <${email}>`,
+        from: "Remitente",
+        to: `${nombre} ${apellido} <${email}>`,
         subject: `${opcion}`,
         html: htmlContent
     };
